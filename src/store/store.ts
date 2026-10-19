@@ -9,11 +9,10 @@ import { ProductsReducer } from "./slices/allProducts";
 
 
 export type preloadedState = {
-    authReducer:initialState
-    cartReducer:CartValuesTypes
-    wishlistReducer:WishlistValuesTypes
-
-   
+    authReducer:initialState,
+    cartReducer:CartValuesTypes,
+    wishlistReducer:WishlistValuesTypes,
+    ordersReducer  : OrdersState
 }
 
 export function createStore(preloadedState:preloadedState){

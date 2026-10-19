@@ -2,6 +2,8 @@
 import { apiclient } from "@/shared/services/ApiClient";
 import { AxiosRequestConfig } from "axios";
 import { cookies } from "next/headers";
+
+import { jwtDecode } from "jwt-decode";
  
 export  async function setToken (token: string): Promise<void> {
   const cookieStore = await cookies()
@@ -73,4 +75,19 @@ return {
   };
  }
 
+}
+
+
+
+// features/server/getUserId.ts
+
+
+export async function getUserId(): Promise<string | null> {
+  const token = (await cookies()).get("token")?.value; 
+  if (!token) return null;
+  try {
+    return jwtDecode<{ id: string }>(token).id;
+  } catch {
+    return null;
+  }
 }

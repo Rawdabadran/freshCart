@@ -1,49 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-  IconBriefcase,
-  IconShoppingBag
- 
-} from "@tabler/icons-react";
-import OrderCard from "../Component/OrderCard";
+import { useEffect } from "react";
+import { IconBriefcase, IconShoppingBag } from "@tabler/icons-react";
+import { toast } from "sonner"; 
 import { useDispatch, useSelector } from "react-redux";
-
+import OrderCard from "../Component/OrderCard";
 import { fetchOrders } from "@/store/orders.slice";
 
+export default function OrdersScreen() {
+  const dispatch = useDispatch();
+  const { orders , isLoading, error } = useSelector((s) => s.ordersReducer);
+  const cartOwner = useSelector((s) => s.cartReducer.data?.cartOwner);
 
+  useEffect(() => {
+    if (cartOwner) dispatch(fetchOrders(cartOwner));
+  }, [cartOwner, dispatch]);
 
-export default function OrdersScreen () {
-
-
-const dispatch = useDispatch();
-const { orders, isLoading, error } = useSelector((s) => s.ordersReducer)
-const {cartOwner} = useSelector((state) =>state.cartReducer.data )
-
-
-
-useEffect(() => {
-  if (cartOwner) dispatch(fetchOrders(cartOwner));
-}, [cartOwner, dispatch]);
-
-useEffect(() => {
-  if (error) toast.error(error);
-}, [error]);
-
-
+  useEffect(() => {
+    if (error) toast.error(error);
+  }, [error]);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      {/* Top bar (tablet & desktop only) */}
-     
-
-      {/* Content */}
       <main className="mx-auto max-w-7xl px-4 py-6 lg:px-6">
         {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="text-sm text-gray-500">
-          <a href="/" className="hover:text-primary-700">
-            Home
-          </a>
+          <a href="/" className="hover:text-primary-700">Home</a>
           <span className="mx-2 text-gray-300">/</span>
           <span className="font-medium text-gray-900">My Orders</span>
         </nav>
@@ -56,9 +38,7 @@ useEffect(() => {
             </span>
             <div>
               <h1 className="text-3xl font-bold">My Orders</h1>
-              <p className="text-sm text-gray-500">
-                Track and manage your orders
-              </p>
+              <p className="text-sm text-gray-500">Track and manage your orders</p>
             </div>
           </div>
 
@@ -72,12 +52,21 @@ useEffect(() => {
         </div>
 
         {/* Orders list */}
-        {orders?(<p className="flex justify-center items-center h-screen text-primary-900 ">Your orders will show here </p>):( <section className="mt-6 grid grid-cols-1 gap-5" aria-label="Orders">
-          {orders.map((order) => (
-            <OrderCard key={order.id} {...order}  defaultOpen={false} />
-          ))}
-        </section>)}
-       
+        {isLoading ? (
+          <p className="flex h-screen items-center justify-center text-gray-500">
+            Loading your orders...
+          </p>
+        ) : orders.length === 0 ? (
+          <p className="flex h-screen items-center justify-center text-primary-900">
+            Your orders will show here
+          </p>
+        ) : (
+          <section className="mt-6 grid grid-cols-1 gap-5" aria-label="Orders">
+            {orders.map((order) => (
+              <OrderCard key={order.id} {...order} defaultOpen={false} />
+            ))}
+          </section>
+        )}
       </main>
     </div>
   );
