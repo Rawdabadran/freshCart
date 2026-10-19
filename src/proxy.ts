@@ -4,6 +4,7 @@ const protectedRoutes = [
   "/cart",
   "/orders",
   "/payment",
+  "/allorders",
   "my_orders",
   "/wishlist",
   "/profile",
@@ -47,6 +48,7 @@ export const config = {
     "/orders/:path*",
     "/payment/:path*",
     "/my_orders/:path*",
+    "/allorders/:path*",
     "/wishlist/:path*",
     "/profile/:path*",
 
