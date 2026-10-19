@@ -30,9 +30,9 @@ export default async function ProductDetilsScreen({id}:{id:string}) {
    
     <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6">
       {/* Breadcrumb */}
-      <ProductInfo ProductData={data.data.data}  />
+      <ProductInfo ProductData={data.data}  />
       {/* Tabs card */}
-      <UserOverView ProductData={data.data.data} />
+      <UserOverView ProductData={data.data} />
   
     </main>
   );
