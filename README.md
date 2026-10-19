@@ -71,4 +71,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ✅- Contact Page
 ✅- Privacy Policy Page
 ✅- Not Found Page
-✅- Profile Page ⇒ [my-addresses, settings]
+✅- Profile Page ⇒ [my-addresses, settings]"# freshCart" 
