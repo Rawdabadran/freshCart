@@ -147,7 +147,7 @@ export default function Navbar() {
 
           <div className="text-[14px] font-medium">
             <div className="container flex gap-6 items-center">
-              <menu className="xl:flex hidden gap-4 border-r pr-3 py-2 border-slate-200">
+              <menu className="lg:flex hidden gap-4 border-r pr-3 py-2 border-slate-200">
                 <li>
                   <Link
                     href={`/`}
