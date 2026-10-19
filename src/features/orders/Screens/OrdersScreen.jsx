@@ -72,7 +72,7 @@ useEffect(() => {
         </div>
 
         {/* Orders list */}
-        {orders.length==0?(<p className="flex justify-center items-center h-screen text-primary-900 ">Your orders will show here </p>):( <section className="mt-6 grid grid-cols-1 gap-5" aria-label="Orders">
+        {orders?(<p className="flex justify-center items-center h-screen text-primary-900 ">Your orders will show here </p>):( <section className="mt-6 grid grid-cols-1 gap-5" aria-label="Orders">
           {orders.map((order) => (
             <OrderCard key={order.id} {...order}  defaultOpen={false} />
           ))}

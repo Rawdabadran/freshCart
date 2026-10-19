@@ -73,13 +73,13 @@ export default function PayMentScreen() {
     try {
       if(PaymentWay=="cash")
       {
-    const response = await CheckCashTheOrder (data, cartId);
-
     if(cartId==null)
     {
       toast.error("thier is no cart to this user")
       return;
     }
+
+    const response = await CheckCashTheOrder (data, cartId);
 
     if ( response.status=="success") {
       toast.success("Order confirmed");
@@ -94,13 +94,13 @@ export default function PayMentScreen() {
       
       else if(PaymentWay=="online"){
         const url =location.origin
-        const response = await CheckOutOnlineOrder(data, cartId,url);
-        
     if(cartId==null)
     {
       toast.error("thier is no cart to this user")
       return;
     }
+
+        const response = await CheckOutOnlineOrder(data, cartId,url);
 
     if (response.status=="success") {
     toast.loading("loading payment page");
@@ -109,6 +109,7 @@ export default function PayMentScreen() {
     },3000)
 
     handelRemoveAllItems()
+     router.push("/my_orders")
     
       return;
     }
