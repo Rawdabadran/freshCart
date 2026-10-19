@@ -1,17 +1,7 @@
-import React from 'react'
+
 import { GetProductDetails } from '../api/getProductDetails'
 import ProductInfo from '../Components/ProductInfo';
 
-
-
-
-
-import {
- 
-  IconChevronLeft,
-  IconChevronRight,
- 
-} from "@tabler/icons-react";
 import UserOverView from '../Components/userOverView';
 
 
