@@ -23,7 +23,7 @@ import { appState } from "@/store/store";
 import { cartActions, cartInitialValues } from "@/store/slices/cart.slice";
 import { clearCart } from "@/features/cart/services/CartOpterations";
 import { toast } from "sonner";
-import CartItem from "@/features/cart/components/CartItem";
+
 
 export default function PayMentScreen() {
 
@@ -85,6 +85,7 @@ export default function PayMentScreen() {
       toast.success("Order confirmed");
     handelRemoveAllItems()
      router.push("/my_orders")
+     router.refresh();
       return;
     }
 
@@ -109,7 +110,7 @@ export default function PayMentScreen() {
     },3000)
 
     handelRemoveAllItems()
-     router.push("/my_orders")
+  
     
       return;
     }
