@@ -8,7 +8,7 @@ export type Brand = {
 
 export default function BrandCard({ id, name, image }: Brand) {
   return (
-    <div
+    <Link href={"/shop"}
       
       className="group flex flex-col items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 pb-5 transition-all duration-200 hover:-translate-y-1 hover:border-primary-600 hover:shadow-lg"
     >
@@ -24,6 +24,6 @@ export default function BrandCard({ id, name, image }: Brand) {
       <h3 className="text-sm font-semibold text-gray-800 group-hover:text-primary-600">
         {name}
       </h3>
-    </div>
+    </Link>
   );
 }

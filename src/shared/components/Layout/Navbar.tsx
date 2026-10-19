@@ -11,6 +11,7 @@ import {
   IconMail,
   IconMenu2,
   IconPhone,
+  IconShoppingBag,
   IconShoppingCart,
   IconTruck,
   IconUser,
@@ -216,6 +217,19 @@ export default function Navbar() {
                   </Link>
                 </li>
 
+
+  <li>
+                  <Link
+                    href={`/my_orders`}
+                    className={`${isAuthenticated ? "flex flex-col gap-2 items-center" : "hidden"}`}
+                  >
+                    <IconShoppingBag stroke={2} size={"20px"} />
+                    <span className="text-sm">orders</span>
+                  </Link>
+                </li>
+
+
+                     
                 <li
                   onClick={handelLogOut}
                   className={`cursor-pointer ${isAuthenticated ? "flex flex-col gap-2 items-center" : "hidden"}`}
@@ -308,6 +322,9 @@ export default function Navbar() {
             <SearchButton className="hidden md:flex flex-1 max-w-md" />
 
             <div className={`flex items-center gap-4 sm:gap-5`}>
+          
+                
+
               <Link
                 href={`/wishlist`}
                 aria-label="Wishlist"
@@ -325,6 +342,7 @@ export default function Navbar() {
                 className={` ${isAuthenticated?"relative text-gray-700 hover:text-primary-600":"hidden"}`}
 
               >
+
                 <IconShoppingCart className="h-6 w-6" />
                 <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary-600 px-1 text-[11px] font-semibold text-white">
                   {count}
@@ -408,6 +426,17 @@ export default function Navbar() {
                         {userInfo?.name ? ` (${userInfo.name})` : ""}
                       </Link>
                     </li>
+                     <li>
+                      <Link
+                        href={`/my_orders`}
+                        onClick={closeMenu}
+                        className="flex items-center gap-3 rounded-lg px-3 py-2.5 hover:bg-gray-50"
+                      >
+                        <IconShoppingBag className="h-5 w-5" />
+                          My orders
+                       
+                      </Link>
+                    </li>
                     <li>
                       <button
                         type="button"
@@ -446,56 +475,7 @@ export default function Navbar() {
               </ul>
 
               {/* Info links + contact */}
-              <ul className="mt-3 space-y-1 border-t border-gray-100 pt-3 text-sm text-gray-600">
-                <li>
-                  <Link
-                    href={`/track-order`}
-                    onClick={closeMenu}
-                    className="block rounded-lg px-3 py-2 hover:bg-gray-50"
-                  >
-                    Track Order
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={`/about`}
-                    onClick={closeMenu}
-                    className="block rounded-lg px-3 py-2 hover:bg-gray-50"
-                  >
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={`/contact`}
-                    onClick={closeMenu}
-                    className="block rounded-lg px-3 py-2 hover:bg-gray-50"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2 px-3 py-2">
-                  <IconPhone className="h-4 w-4" />
-                  <a href="tel:+18001234567">+1 (800) 123-4567</a>
-                </li>
-                <li className="flex items-center gap-2 px-3 py-2">
-                  <IconMail className="h-4 w-4" />
-                  <a href="mailto:support@freshcart.com">
-                    support@freshcart.com
-                  </a>
-                </li>
-                <li className="flex gap-3 px-3 py-2">
-                  <select className="rounded border border-gray-200 px-2 py-1">
-                    <option>EGP</option>
-                    <option>SAR</option>
-                    <option>AED</option>
-                  </select>
-                  <select className="rounded border border-gray-200 px-2 py-1">
-                    <option>العربية</option>
-                    <option>English</option>
-                  </select>
-                </li>
-              </ul>
+             
             </nav>
           )}
         </div>
