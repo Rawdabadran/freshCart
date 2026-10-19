@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* Firefox + Chrome/Edge الحديثة */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #8b8b8b #f3f4f6; /* thumb track */
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b8b8b;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b6b6b;
+}
+
+/* الخطوط: inline علشان Tailwind يقرا الـ variable وقت التشغيل */
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@theme {
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fde3e4;
+  --color-primary-200: #fbcacc;
+  --color-primary-300: #f7a0a5;
+  --color-primary-400: #ef666f;
+  --color-primary-500: #e0343f;
+  --color-primary-600: #c8102e;
+  --color-primary-700: #a80d26;
+  --color-primary-800: #8a0f24;
+  --color-primary-900: #6f1021;
+  --color-primary-950: #3d060f;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-gray-700 font-sans;
+  }
+
+  span,
+  a {
+    @apply inline-block;
+  }
+
+  button,
+  a {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg bg-gray-200 text-gray-900 font-semibold hover:bg-gray-300 transition-colors duration-200;
+  }
+
+  .form-control {
+    @apply px-3 py-2 rounded-md border border-gray-400/40 focus:outline-none focus:border-primary-600;
+  }
+}
+
+@utility container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  transform: scale(1.1);
+}
+
+.swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 1) !important;
+  width: 32px !important;
+  border-radius: 6px !important;
+}
